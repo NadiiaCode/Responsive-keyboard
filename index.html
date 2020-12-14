@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+  </head>
+  <body>
+    <div id="display"></div>
+    <div id="keyboard">
+      <div class="row r1">
+        <span class="key i num">1</span>
+        <span class="key i num">2</span>
+        <span class="key i num">3</span>
+        <span class="key i num">4</span>
+        <span class="key i num">5</span>
+        <span class="key i num">6</span>
+        <span class="key i num">7</span>
+        <span class="key i num">8</span>
+        <span class="key i num">9</span>
+        <span class="key i num">0</span>
+      </div>
+      <div class="row r2">
+        <span class="key i">q</span>
+        <span class="key i">w</span>
+        <span class="key i">e</span>
+        <span class="key i">r</span>
+        <span class="key i">t</span>
+        <span class="key i">y</span>
+        <span class="key i">u</span>
+        <span class="key i">i</span>
+        <span class="key i">o</span>
+        <span class="key i">p</span>
+      </div>
+      <div class="row r3">
+        <span class="key i">a</span>
+        <span class="key i">s</span>
+        <span class="key i">d</span>
+        <span class="key i">f</span>
+        <span class="key i">g</span>
+        <span class="key i">h</span>
+        <span class="key i">j</span>
+        <span class="key i">k</span>
+        <span class="key i">l</span>
+      </div>
+      <div class="row r4">
+        <span class="key dark up rowfour"><b>&#8679;</b></span>
+        <span class="key i">z</span>
+        <span class="key i">x</span>
+        <span class="key i">c</span>
+        <span class="key i">v</span>
+        <span class="key i">b</span>
+        <span class="key i">n</span>
+        <span class="key i">m</span>
+        <span class="key dark erase rowfour">&#9003;</span>
+      </div>
+      <div class="row r5">
+        <span class="key dark last theme">&#128396;</span>
+        <span class="key i">,</span>
+        <span class="key i space">&nbsp;</span>
+        <span class="key i">.</span>
+        <span class="key dark fiveline last"><b>&#9166;</b></span>
+      </div>
+    </div>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap");
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+      }
+
+      #display {
+        width: 100%;
+        height: 45vh;
+        padding-bottom: 10px;
+        overflow: auto;
+      }
+
+      #keyboard,
+      #keyboardtwo {
+        width: 100vw;
+        height: 50vh;
+        bottom: 0px;
+        padding-bottom: 20px;
+        position: fixed;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 23px;
+        background-image: radial-gradient(
+          circle,
+          #ddc1cd,
+          #c6aab6,
+          #b094a0,
+          #9a7e8a,
+          #856975
+        );
+      }
+
+      .row {
+        width: 100%;
+        margin: 4px 2px;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .key {
+        margin: 2px 0;
+        padding: 15px 15px;
+        width: 5%;
+        text-align: center;
+        border-radius: 15px;
+        cursor: grab;
+        color: #000000;
+        background-image: radial-gradient(
+          circle,
+          #d6cad2,
+          #cdc3cb,
+          #c5bbc3,
+          #bcb4bc,
+          #b4adb4
+        );
+      }
+
+      .num {
+        padding: 7px 7px;
+      }
+
+      .dark {
+        color: #c4015c;
+        background-image: radial-gradient(
+          circle,
+          #b6a9ae,
+          #ab99a0,
+          #a08a93,
+          #967b85,
+          #8b6c78
+        );
+      }
+
+      .space {
+        width: 34%;
+      }
+
+      .last {
+        width: 16%;
+      }
+
+      .rowfour {
+        width: 10%;
+      }
+
+      #keyboardtwo {
+        background-image: radial-gradient(
+          circle,
+          #88a182,
+          #72886d,
+          #5d7059,
+          #495846,
+          #364233
+        );
+      }
+    </style>
+
+    <script>
+      capitalletter = [
+        "Q",
+        "W",
+        "E",
+        "R",
+        "T",
+        "Y",
+        "U",
+        "I",
+        "O",
+        "P",
+        "A",
+        "S",
+        "D",
+        "F",
+        "G",
+        "H",
+        "J",
+        "K",
+        "L",
+        "&#8679;",
+        "Z",
+        "X",
+        "C",
+        "V",
+        "B",
+        "N",
+        "M",
+      ];
+      letter = [
+        "q",
+        "w",
+        "e",
+        "r",
+        "t",
+        "y",
+        "u",
+        "i",
+        "o",
+        "p",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "&#8679;",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+      ];
+      $(document).ready(function () {
+        function replacel() {
+          alert($(".r2:nth-child(2)").text());
+        }
+        lowercase = true;
+        theme = "white";
+        $(".erase").click(function () {
+          text = $("#display").html();
+          if (text.substr(text.length - 6, 6) == "&nbsp;") {
+            text = text.substr(0, text.length - 6);
+          } else {
+            text = text.substr(0, text.length - 1);
+          }
+          $("#display").html(text);
+        });
+
+        $(".i").click(function () {
+          $("#display").append($(this).html());
+        });
+
+        $(".fiveline").click(function () {
+          $("#display").append("<br>");
+        });
+        $(".up").click(function () {
+          if (lowercase === true) {
+            row = "";
+            for (i = 0; i <= 10; i++) {
+              $(".r2 span:nth-child(" + i + ")").html(capitalletter[i - 1]);
+            }
+            for (i = 10; i <= 19; i++) {
+              b = i - 10;
+              $(".r3 span:nth-child(" + b + ")").html(capitalletter[i - 1]);
+            }
+            for (i = 19; i <= 30; i++) {
+              b = i - 19;
+              $(".r4 span:nth-child(" + b + ")").html(capitalletter[i - 1]);
+            }
+            lowercase = false;
+          } else {
+            for (i = 0; i <= 10; i++) {
+              $(".r2 span:nth-child(" + i + ")").html(letter[i - 1]);
+            }
+            for (i = 10; i <= 19; i++) {
+              b = i - 10;
+              $(".r3 span:nth-child(" + b + ")").html(letter[i - 1]);
+            }
+            for (i = 19; i <= 30; i++) {
+              b = i - 19;
+              $(".r4 span:nth-child(" + b + ")").html(letter[i - 1]);
+            }
+            lowercase = true;
+          }
+        });
+        $(".theme").click(function () {
+          if (theme == "white") {
+            $(".key").addClass("keyd");
+            $("#keyboard").attr("id", "keyboardtwo");
+            $("#display").css({ background: "#313f2e", color: "#fff" });
+            theme = "dark";
+          } else {
+            $(".key").removeClass("keyd");
+            $("#keyboardtwo").attr("id", "keyboard");
+            $("#display").css({ background: "#FFFFFF", color: "#000" });
+            theme = "white";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
